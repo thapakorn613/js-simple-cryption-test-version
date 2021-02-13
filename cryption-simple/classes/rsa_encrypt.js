@@ -1,6 +1,7 @@
 const crypto = require("crypto")
 
 function EncodePublicKey(data,publicKey) {
+    console.log("publicKey ",publicKey)
     const encryptedData = crypto.publicEncrypt(
         {
             key: publicKey,
@@ -13,6 +14,7 @@ function EncodePublicKey(data,publicKey) {
 }
 
 function DecodePublicKey(encryptedData,privateKey) {
+    console.log("privateKey ",privateKey)
     const decryptedData = crypto.privateDecrypt(
     {
       key: privateKey,

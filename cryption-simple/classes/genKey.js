@@ -1,6 +1,6 @@
 const crypto = require("crypto")
 
-module.exports =  function () {
+module.exports = function ket() {
     const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
         modulusLength: 2048,
         publicExponent: 3,

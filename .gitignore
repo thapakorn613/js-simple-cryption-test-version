@@ -1,3 +1,4 @@
 **/cryption-simple/node_modules/
 .env
 **/.env.local
+**/keys/
