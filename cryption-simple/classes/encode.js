@@ -1,17 +1,18 @@
-const crypto = require('crypto');
+const crypto = require('crypto')
+require('dotenv').config()
 const SaltLenght = 9; //ขนาด 9 ตัวอักษร
 function dataEn(text) {
     // สร้างฟังก์ชันการเข้ารหัสโดยนำ md5 + salt เเล้วนำมา base64 จะได้ชุดข้อมูลที่ผ่านการเข้ารหัสเป็น 64bit
-    console.log('Input Data' + ': ' + text); // เเสดงผลข้อมูลที่รับเข้ามาจาก index
-    var salt = generateSalt(SaltLenght);
-    var hash = md5(text + salt); // text คือชุดข้อมูลที่รับจาก index.js
-    var SH = salt + hash;
-    var encode = Buffer.from(SH).toString('base64'); //แปลงชุดข้อมูลเป็น 64 bit
-    return encode; // รีเทิร์นค่ากลับไปยังฟังก์ชัน
+    console.log('Input Data' + ': ' + text) // เเสดงผลข้อมูลที่รับเข้ามาจาก index
+    let salt = generateSalt(SaltLenght)
+    let hash = md5(text + salt) // text คือชุดข้อมูลที่รับจาก index.js
+    let SH = salt + hash
+    let encode = Buffer.from(SH).toString('base64') //แปลงชุดข้อมูลเป็น 64 bit
+    return encode
 }
 
 function generateSalt(len) { // สร้างฟังก์ชันเข้ารหัสแบบ salt
-    var privateKey = '0123456789abcdefghijklmnopqurstuvwxyzABCDEFGHIJKLMNOPQURSTUVWXYZ',
+    let privateKey = process.env.PRIVATEKEY,
         keyLen = privateKey.length,
         salt = '';
     for (var i = 0; i < len; i++) {

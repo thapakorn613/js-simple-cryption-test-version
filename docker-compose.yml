@@ -1,0 +1,14 @@
+version: '3'
+services:
+  proxy-server:
+    build: ./proxy-server/
+    container_name: exam_proxy-server
+    working_dir: /usr/src/app
+    volumes:
+      - ./proxy-server/:/usr/src/app/
+    environment:
+      NODE_ENV: ${NODE_MODE_ENV}
+      PORT: ${PORT}
+    ports:
+      - 2050:3050
+    command: npm start
